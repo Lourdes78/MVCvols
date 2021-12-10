@@ -24,7 +24,7 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
+        <a class="nav-link active" href="usuari/registrar">Active</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
