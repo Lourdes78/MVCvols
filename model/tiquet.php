@@ -1,4 +1,5 @@
 <?php
+require_once("../config/database.php");
 class tiquet{
 private $codi;
 private $codi_reserva;
@@ -12,7 +13,44 @@ public function __construct($codi_reserva,$total,$data_tiquet){
     $this -> data_tiquet = $data_tiquet;
 
 }
-
+public function insertar(){
+    
+    $conexion = new database();
+    $sql = "INSERT INTO vol (codi_reserva, total,data_tiquet) VALUES ('$this->codi_reserva','$this->total','$this->data_tiquet')";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+public function eliminar(){
+    $conexion = new database();
+    $sql = "DELETE FROM tiquet WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+public function modificar(){
+    $conexion = new database();
+    $sql = "UPDATE tiquet SET codi_reserva = '$this->codi_reserva', total = '$this->total', data_tiquet = '$this->data_tiquet' WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+public function buscar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM tiquet WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+public function listar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM tiquet";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
 
 /**
  * Get the value of codi
