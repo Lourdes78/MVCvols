@@ -16,7 +16,7 @@ public function __construct($codi_reserva,$total,$data_tiquet){
 public function insertar(){
     
     $conexion = new database();
-    $sql = "INSERT INTO vol (codi_reserva, total,data_tiquet) VALUES ('$this->codi_reserva','$this->total','$this->data_tiquet')";
+    $sql = "INSERT INTO tiquet (codi_reserva, total,data_tiquet) VALUES ('$this->codi_reserva','$this->total','$this->data_tiquet')";
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();
