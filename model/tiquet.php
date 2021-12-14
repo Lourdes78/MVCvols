@@ -5,8 +5,8 @@ private $codi_reserva;
 private $total;
 private $data_tiquet;
   
-public function __construct($codi,$codi_reserva,$total,$data_tiquet){
-    $this-> codi = $codi;
+public function __construct($codi_reserva,$total,$data_tiquet){
+    
     $this-> codi_reserva = $codi_reserva;
     $this -> total = $total;
     $this -> data_tiquet = $data_tiquet;

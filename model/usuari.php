@@ -10,9 +10,9 @@ public	$dni;
 public	$telefon;	
 public	$num_tarjeta;
 public	$rol;
-public function __construct($codi,	$nom,	$contrasenya,	$correu,	$adreça,	$dni,	$telefon,	$num_tarjeta,	$rol)
+public function __construct(	$nom,	$contrasenya,	$correu,	$adreça,	$dni,	$telefon,	$num_tarjeta,	$rol)
 {
-    $this->codi = $codi;
+  
     $this->nom = $nom;
     $this->contrasenya = $contrasenya;
     $this->correu = $correu;
@@ -24,7 +24,14 @@ public function __construct($codi,	$nom,	$contrasenya,	$correu,	$adreça,	$dni,	
     
 
 }
-
+public function insertar(){
+    
+    $conexion = new database();
+    $sql = "INSERT INTO vol (nom, contrasenya, correu,	adreça, dni,telefon,num_tarjeta) VALUES ('$this->nom','$this->contrasenya','$this->correu','$this->adreça','$this->dni','$this->ntelefon','$this->num_tarjeta')";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
 
 /**
  * Get the value of codi

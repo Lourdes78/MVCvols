@@ -1,4 +1,5 @@
 <?php
+require_once("../config/database.php");
 class vol{
 public $codi;
 public $origen;
@@ -7,8 +8,8 @@ public $preu;
 public $foto;
 public $nombre_places;
 
-public function __construct($codi,$origen,$desti,$preu,$foto,$nombre_places){
-    $this-> codi = $codi;
+public function __construct($origen,$desti,$preu,$foto,$nombre_places){
+    
     $this-> origen = $origen;
     $this -> desti = $desti;
     $this -> preu = $preu;
@@ -17,6 +18,49 @@ public function __construct($codi,$origen,$desti,$preu,$foto,$nombre_places){
 
 
 }
+public function insertar(){
+    
+    $conexion = new database();
+    $sql = "INSERT INTO vol (origen,desti,preu,foto,nombre_places) VALUES ('$this->origen','$this->desti','$this->preu','$this->foto','$this->nombre_places')";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+
+public function eliminar(){
+    $conexion = new database();
+    $sql = "DELETE FROM vol WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+
+public function modificar(){
+    $conexion = new database();
+    $sql = "UPDATE vol SET origen = '$this->origen', desti = '$this->desti', preu = '$this->preu', foto = '$this->foto', nombre_places = '$this->nombre_places' WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+ 
+public function buscar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM vol WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function listar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM vol";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
 
 /**
  * Get the value of codi
