@@ -8,16 +8,6 @@ public $preu;
 public $foto;
 public $nombre_places;
 
-public function __construct($origen,$desti,$preu,$foto,$nombre_places){
-    
-    $this-> origen = $origen;
-    $this -> desti = $desti;
-    $this -> preu = $preu;
-    $this -> foto = $foto;
-    $this -> nombre_places = $nombre_places;
-
-
-}
 public function insertar(){
     
     $conexion = new database();
