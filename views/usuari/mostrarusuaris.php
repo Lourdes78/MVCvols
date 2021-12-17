@@ -21,8 +21,8 @@ while($row = $vols->fetch_assoc()){
     echo "<td>".$row['dni']."</td>";
     echo "<td>".$row['telefon']."</td>";
     echo "<td>".$row['num_tarjeta']."</td>";
-    echo "<td><a href='index.php?page=vol&action=modificar&codi=".$row['codi']."'>Modificar</a></td>";
-    echo "<td><a href='index.php?page=vol&action=eliminar&codi=".$row['codi']."'>Eliminar</a></td>";
+    echo "<td><a href='index.php?page=usuari&action=modificar&codi=".$row['codi']."'>Modificar</a></td>";
+    echo "<td><a href='index.php?page=usuari&action=eliminar&codi=".$row['codi']."'>Eliminar</a></td>";
     echo "</tr>";
 }
 echo "</table>";

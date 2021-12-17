@@ -26,7 +26,7 @@ contrasenya	correu	adreça	dni	telefon	num_tarjeta
     </div>
     <div class="form-group">
         <label for="num_tarjeta">Número de targeta</label>
-        <input type="text" class="form-control" id="nombre_places" name="nombre_places" placeholder="Nombre places">
+        <input type="text" class="form-control" id="nombre_places" name="nombre_places" placeholder="Nombre places"><br>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

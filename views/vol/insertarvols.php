@@ -1,4 +1,4 @@
-<form action="index.php?controller=vol&action=insertarvols" method="post">
+<form action="index.php?controller=vol&action=guardarvols" method="post">
 
     <div class="form-group">
         <label for="origen">Origen</label>
