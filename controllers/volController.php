@@ -5,8 +5,7 @@ class volController{
     public function mostrarvols(){
           
         $vol = new vol();
-        $vols = $vol->listar();
-        
+        $vols = $vol->listar();       
         require_once 'views/vol/mostrarvols.php';
     }
 
@@ -35,13 +34,24 @@ class volController{
             header("Location: index.php?controller=vol&action=mostrarvols");
     }
     public function modificar(){
+        require_once 'views/vol/modificarvols.php';
         $vol = new vol();
         $vol->codi =$_REQUEST['codi'];
         $r= $vol->buscar();
         $r->fetch_assoc();
-        require_once 'views/vol/modificarvols.php';
+    }
+    public function actualitzar(){
+        $vol = new vol();
+        $vol->origen = $_REQUEST['origen'];
+        $vol->desti = $_REQUEST['desti'];
+        $vol->preu = $_REQUEST['preu'];
+        $vol->foto = $_REQUEST['foto'];
+        $vol->nombre_places = $_REQUEST['nombre_places']; 
+        $re= $vol->buscar();  
+        $r=$vol->modificar();
+        $re->fetch_assoc();
+
+        header("Location: index.php?controller=vol&action=mostrarvols");
     }
 
 }
-
-?>

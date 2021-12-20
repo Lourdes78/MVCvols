@@ -1,19 +1,18 @@
-<table style="border: 1;">
+<table class="table table-striped" style="border: 1">
     <tr>
-    <th>codi</th>
-    <th>origen</th>
-    <th>desti</th>
-    <th>preu</th>
-    <th>foto</th>
-    <th>nombre_places</th>
-    <th>modificar</th>
-    <th>eliminar</th>
+    <th>Origen</th>
+    <th>Desti</th>
+    <th>Preu</th>
+    <th>Foto</th>
+    <th>Nombre de places</th>
+    <th>Modificar</th>
+    <th>Eliminar</th>
     
     </tr>
 <?php
 while($row = $vols->fetch_assoc()){
     echo "<tr>";
-    echo "<td>".$row['codi']."</td>";
+  
     echo "<td>".$row['origen']."</td>";
     echo "<td>".$row['desti']."</td>";
     echo "<td>".$row['preu']."</td>";

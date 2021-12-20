@@ -1,5 +1,5 @@
 <?php
-require_once("../config/database.php");
+require_once("config/database.php");
 class usuari{
     
 public	$codi;
@@ -11,20 +11,7 @@ public	$dni;
 public	$telefon;	
 public	$num_tarjeta;
 public	$rol;
-public function __construct(	$nom,	$contrasenya,	$correu,	$adreça,	$dni,	$telefon,	$num_tarjeta,	$rol)
-{
-  
-    $this->nom = $nom;
-    $this->contrasenya = $contrasenya;
-    $this->correu = $correu;
-    $this->adreça = $adreça;
-    $this->dni = $dni;
-    $this->telefon = $telefon;
-    $this->num_tarjeta = $num_tarjeta;
-    $this->rol = $rol;
-    
 
-}
 public function insertar(){
     
     $conexion = new database();
