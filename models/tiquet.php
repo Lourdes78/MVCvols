@@ -1,21 +1,16 @@
 <?php
-require_once("../config/database.php");
+require_once("config/database.php");
 class tiquet{
 private $codi;
 private $codi_reserva;
 private $total;
 private $data_tiquet;
   
-public function __construct($codi_reserva,$total,$data_tiquet){
-    
-    $this-> codi_reserva = $codi_reserva;
-    $this -> total = $total;
-    $this -> data_tiquet = $data_tiquet;
 
-}
 public function insertar(){
     
     $conexion = new database();
+    $sql1 = "";
     $sql = "INSERT INTO tiquet (codi_reserva, total,data_tiquet) VALUES ('$this->codi_reserva','$this->total','$this->data_tiquet')";
     $a = $conexion->connect();
     $a->query($sql);
