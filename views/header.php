@@ -16,8 +16,9 @@
 <body>
 
 <div class="p-5 bg-primary text-white text-center">
-  <h1>MVC Vols</h1>
-  <p>MVC VOLS!</p> 
+  <h1>LOUCEL AIRLINES</h1>
+  <p>VOLA AMB NOSALTRES !!</p> 
+  <p>GAUDEIX EL VIATGE !!</p> 
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
