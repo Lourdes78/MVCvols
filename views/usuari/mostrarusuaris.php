@@ -1,7 +1,7 @@
 <table class="table table-striped" style="border: 1 ">
     <tr>
     <th>Nom</th>
-    <th>Contrasenya</th>
+
     <th>Correu</th>
     <th>Adreça</th>
     <th>Dni</th>
@@ -15,7 +15,6 @@
 while($row = $usuaris->fetch_assoc()){
     echo "<tr>";
     echo "<td>".$row['nom']."</td>";
-    echo "<td>".$row['contrasenya']."</td>";
     echo "<td>".$row['correu']."</td>";
     echo "<td>".$row['adreça']."</td>";
     echo "<td>".$row['dni']."</td>";

@@ -25,8 +25,12 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
     <li class="nav-item">
+        <a class="nav-link" href="login.php">Login</a>
+        </li> 
+    <li class="nav-item">
         <a class="nav-link" href="index.php?controller=vol&action=mostrarvols">Mostrar vols</a>
-      <li class="nav-item">
+        </li> 
+        <li class="nav-item">
         <a class="nav-link" href="index.php?controller=vol&action=insertarvols">Insertar vols</a>
       </li>
       <li class="nav-item">

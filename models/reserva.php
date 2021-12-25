@@ -3,12 +3,12 @@ require_once("config/database.php");
 class reserva
 {
 
-    private $codi;
-    private $codi_vol;
-    private $codi_usuari;
-    private $data_anada;
-    private $data_tornada;
-    private $nombre_places;
+    public $codi;
+    public $codi_vol;
+    public $codi_usuari;
+    public $data_anada;
+    public $data_tornada;
+    public $nombre_places;
 
     public function insertar(){
     

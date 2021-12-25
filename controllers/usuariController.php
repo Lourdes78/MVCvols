@@ -38,4 +38,26 @@ class usuariController
         $usuari->eliminar();
         header("Location: index.php?controller=usuari&action=mostrarusuaris");
     }
+    public function modificar(){
+        
+        $usuari = new usuari();
+        $usuari->codi =$_REQUEST['codi'];
+        $r= $usuari->buscar();
+        $re = $r->fetch_assoc();
+        require_once 'views/usuari/modificarusuari.php';
+    }
+    public function actualitzar(){
+        $usuari = new usuari();
+        $usuari->codi = $_REQUEST["codi"];
+        $usuari->nom = $_REQUEST['nom'];
+        $usuari->correu = $_REQUEST['correu'];
+        $usuari->adreça = $_REQUEST['adreça'];
+        $usuari->dni = $_REQUEST['dni'];
+        $usuari->telefon= $_REQUEST['telefon']; 
+        $usuari->num_tarjeta = $_REQUEST['num_tarjeta']; 
+     
+        $usuari->modificar();
+
+      header("Location: index.php?controller=usuari&action=mostrarusuaris");
+    }
 }

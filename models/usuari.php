@@ -15,7 +15,8 @@ public	$rol;
 public function insertar(){
     
     $conexion = new database();
-    $sql = "INSERT INTO usuari (nom, contrasenya, correu,	adreça, dni,telefon,num_tarjeta) VALUES ('$this->nom','$this->contrasenya','$this->correu','$this->adreça','$this->dni','$this->telefon','$this->num_tarjeta')";
+    $password=md5($this->contrasenya);
+    $sql = "INSERT INTO usuari (nom, contrasenya, correu,adreça,dni,telefon,num_tarjeta) VALUES ('$this->nom','$password','$this->correu','$this->adreça','$this->dni','$this->telefon','$this->num_tarjeta')";
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();

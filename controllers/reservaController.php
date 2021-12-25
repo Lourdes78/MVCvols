@@ -20,4 +20,8 @@ class reservaController{
         $reserva->insertar();
         header("Location: index.php?controller=reserva&action=mostrarreserves");
     }
+    public function index()
+    {
+        require_once 'index.php';
+    }
 }
