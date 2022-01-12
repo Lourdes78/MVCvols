@@ -36,6 +36,7 @@ class volController{
     public function modificar(){
         
         $vol = new vol();
+        
         $vol->codi =$_REQUEST['codi'];
         $r= $vol->buscar();
         $re = $r->fetch_assoc();
