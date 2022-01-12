@@ -13,7 +13,8 @@ class reserva
     public function insertar(){
     
         $conexion = new database();
-        $sql = "INSERT INTO reserva (codi_vol, codi_usuari, data_anada,	data_tornada, nombre_places) VALUES ('$this->codi_vol','$this->codi_usuari','$this->data_anada','$this->adata_tornada','$this->nombre_places')";
+        $sql = "INSERT INTO reserva (codi_vol, codi_usuari, data_anada,	data_tornada, nombre_places) VALUES ('$this->codi_vol','$this->codi_usuari','$this->data_anada','$this->data_tornada','$this->nombre_places')";
+        echo $sql;
         $a = $conexion->connect();
         $a->query($sql);
         $a->close();
@@ -48,6 +49,17 @@ class reserva
         $a->close();
         return $resultado;
     }
+    public function nVol(){
+        $conexion = new database();
+        $sql = "SELECT codi_vol FROM reserva as r 
+        inner join vol as v where r.codi_vol = v.codi";
+        $a = $conexion->connect();
+        $resultado = $a->query($sql);
+        $a->close();
+        return $resultado;
+
+    }
+   
 
     /**
      * Get the value of codi

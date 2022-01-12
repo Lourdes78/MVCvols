@@ -11,8 +11,8 @@
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input type="text" id="user" class="form-control form-control-lg" />
+                <label class="form-label" for="user">User</label>
               </div>
 
               <div class="form-outline form-white mb-4">
@@ -31,7 +31,7 @@
             </div>
 
             <div>
-              <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a></p>
+              <p class="mb-0">Don't have an account? <a href="index.php?controller=usuari&action=insertarusuaris" class="text-white-50 fw-bold">Sign Up</a></p>
             </div>
 
           </div>
