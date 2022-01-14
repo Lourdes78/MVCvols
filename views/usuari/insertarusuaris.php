@@ -1,3 +1,4 @@
+<h2>REGISTRE</H2>
 <form action="index.php?controller=usuari&action=guardarusuaris" method="post">
 
     <div class="form-group">

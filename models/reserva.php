@@ -49,17 +49,8 @@ class reserva
         $a->close();
         return $resultado;
     }
-    public function nVol(){
-        $conexion = new database();
-        $sql = "SELECT codi_vol FROM reserva as r 
-        inner join vol as v where r.codi_vol = v.codi";
-        $a = $conexion->connect();
-        $resultado = $a->query($sql);
-        $a->close();
-        return $resultado;
 
-    }
-   
+    
 
     /**
      * Get the value of codi

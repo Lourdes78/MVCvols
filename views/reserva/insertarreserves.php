@@ -1,6 +1,7 @@
+<H2>RESERVAR VOL</H2>
 <form action="index.php?controller=reserva&action=guardarreserves" method="post">
 <div class="form-group">
-<input type="hidden" class="form-control " id="codi" name="codi_vol" placeholder="codi_vol" value="<?php echo $re['codi_vol'];?>" >
+<input type="hidden" class="form-control " id="codi" name="codi_vol" placeholder="codi_vol" value="<?php echo $_REQUEST['codi'];?>" >
         <label for="text">Codi Usuari</label>
         <input type="text" class="form-control" id="codi_usuari" name="codi_usuari" >
     </div>

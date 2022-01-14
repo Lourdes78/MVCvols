@@ -1,3 +1,4 @@
+<H2>MODIFICAR VOLS</H2>
 <form action="index.php?controller=vol&action=actualitzar" method="post">
 
     <div class="form-group">

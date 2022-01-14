@@ -1,3 +1,4 @@
+<H2>MOSTRAR USUARIS</H2>
 <table class="table table-striped" style="border: 1 ">
     <tr>
     <th>Nom</th>

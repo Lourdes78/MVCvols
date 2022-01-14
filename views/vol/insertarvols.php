@@ -1,3 +1,4 @@
+<H2>INTRODUÏR VOLS</H2>
 <form action="index.php?controller=vol&action=guardarvols" method="post">
 
     <div class="form-group">
