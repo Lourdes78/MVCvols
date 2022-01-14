@@ -46,6 +46,15 @@ public function listar(){
     $a->close();
     return $resultado;
 }
+public function total(){
+    $conexion = new database();
+    $sql = "SELECT (r.nombre_places * v.preu) as total FROM `ticket` as t INNER JOIN reserva as r ON t.codi_reserva = r.codi INNER JOIN vol as v ON r.codi_vol = v.codi";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+
+}
 
 /**
  * Get the value of codi
