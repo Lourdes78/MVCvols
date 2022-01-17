@@ -1,38 +1,38 @@
 <?php
 require_once("config/database.php");
-class tiquet{
+class ticket{
 private $codi;
 private $codi_reserva;
 private $total;
-private $data_tiquet;
+private $data_ticket;
   
 
 public function insertar(){
     
     $conexion = new database();
     $sql1 = "";
-    $sql = "INSERT INTO tiquet (codi_reserva, total,data_tiquet) VALUES ('$this->codi_reserva','$this->total','$this->data_tiquet')";
+    $sql = "INSERT INTO ticket (codi_reserva, total,data_ticket) VALUES ('$this->codi_reserva','$this->total','$this->data_ticket')";
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();
 }
 public function eliminar(){
     $conexion = new database();
-    $sql = "DELETE FROM tiquet WHERE codi = '$this->codi'";
+    $sql = "DELETE FROM ticket WHERE codi = '$this->codi'";
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();
 }
 public function modificar(){
     $conexion = new database();
-    $sql = "UPDATE tiquet SET codi_reserva = '$this->codi_reserva', total = '$this->total', data_tiquet = '$this->data_tiquet' WHERE codi = '$this->codi'";
+    $sql = "UPDATE ticket SET codi_reserva = '$this->codi_reserva', total = '$this->total', data_ticket = '$this->data_ticket' WHERE codi = '$this->codi'";
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();
 }
 public function buscar(){
     $conexion = new database();
-    $sql = "SELECT * FROM tiquet WHERE codi = '$this->codi'";
+    $sql = "SELECT * FROM ticket WHERE codi = '$this->codi'";
     $a = $conexion->connect();
     $resultado = $a->query($sql);
     $a->close();
@@ -40,7 +40,7 @@ public function buscar(){
 }
 public function listar(){
     $conexion = new database();
-    $sql = "SELECT * FROM tiquet";
+    $sql = "SELECT * FROM ticket";
     $a = $conexion->connect();
     $resultado = $a->query($sql);
     $a->close();
@@ -113,26 +113,26 @@ return $this;
 }
 
 /**
- * Get the value of data_tiquet
+ * Get the value of data_ticket
  */
-public function getDataTiquet()
+public function getDataticket()
 {
-return $this->data_tiquet;
+return $this->data_ticket;
 }
 
 /**
- * Set the value of data_tiquet
+ * Set the value of data_ticket
  */
-public function setDataTiquet($data_tiquet): self
+public function setDataticket($data_ticket): self
 {
-$this->data_tiquet = $data_tiquet;
+$this->data_ticket = $data_ticket;
 
 return $this;
 }
 }
-$a= new tiquet(1,1,125,"2021-10-22");
-echo $a->getDataTiquet();
-$a->setDataTiquet("2020-12-28");
-echo "<br>". $a->getDataTiquet();
+$a= new ticket(1,1,125,"2021-10-22");
+echo $a->getDataticket();
+$a->setDataticket("2020-12-28");
+echo "<br>". $a->getDataticket();
 
 ?>
