@@ -2,7 +2,6 @@
 <table class="table table-striped" style="border: 1 ">
     <tr>
     <th>Nom</th>
-
     <th>Correu</th>
     <th>Adreça</th>
     <th>Dni</th>

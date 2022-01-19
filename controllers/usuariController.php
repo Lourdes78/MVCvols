@@ -50,6 +50,7 @@ class usuariController
         $usuari = new usuari();
         $usuari->codi = $_REQUEST["codi"];
         $usuari->nom = $_REQUEST['nom'];
+        $usuari->contrasenya = (md5($_REQUEST['contrasenya']));
         $usuari->correu = $_REQUEST['correu'];
         $usuari->adreça = $_REQUEST['adreça'];
         $usuari->dni = $_REQUEST['dni'];
