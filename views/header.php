@@ -42,9 +42,7 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php?controller=reserva&action=mostrarreserves">Mostrar reserves</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.php?controller=reserva&action=insertarreserves">Reservar</a>
-      </li>
+    
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>

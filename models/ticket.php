@@ -1,21 +1,14 @@
 <?php
 require_once("config/database.php");
-class ticket{
-private $codi;
-private $codi_reserva;
-private $total;
-private $data_ticket;
+class ticket
+{
+public $codi;
+public $codi_reserva;
+public $total;
+public $data_ticket;
   
 
-public function insertar(){
-    
-    $conexion = new database();
-    $sql1 = "";
-    $sql = "INSERT INTO ticket (codi_reserva, total,data_ticket) VALUES ('$this->codi_reserva','$this->total','$this->data_ticket')";
-    $a = $conexion->connect();
-    $a->query($sql);
-    $a->close();
-}
+
 public function eliminar(){
     $conexion = new database();
     $sql = "DELETE FROM ticket WHERE codi = '$this->codi'";
@@ -40,19 +33,25 @@ public function buscar(){
 }
 public function listar(){
     $conexion = new database();
-    $sql = "SELECT * FROM ticket";
+    $sql = "SELECT origen,desti,data_anada,data_tornada,reserva.nombre_places as n_places,
+    preu,total,data_ticket FROM ticket INNER JOIN reserva ON ticket.codi_reserva = reserva.codi
+    INNER JOIN vol ON reserva.codi_vol = vol.codi";
     $a = $conexion->connect();
     $resultado = $a->query($sql);
     $a->close();
     return $resultado;
 }
-public function total(){
+public function insertar(){
     $conexion = new database();
-    $sql = "SELECT (r.nombre_places * v.preu) as total FROM `ticket` as t INNER JOIN reserva as r ON t.codi_reserva = r.codi INNER JOIN vol as v ON r.codi_vol = v.codi";
     $a = $conexion->connect();
-    $resultado = $a->query($sql);
+    $sqltotal = "SELECT (r.nombre_places * v.preu) as total FROM reserva as r INNER JOIN vol as v
+    ON r.codi_vol = v.codi WHERE r.codi = '$this->codi_reserva'";
+    $resultat = $a->query($sqltotal);
+    $row = $resultat->fetch_assoc();
+    $total = $row['total'];
+    $sql = "INSERT INTO ticket (codi_reserva,total) VALUES ('$this->codi_reserva','$total')";
+    $a->query($sql);
     $a->close();
-    return $resultado;
 
 }
 
