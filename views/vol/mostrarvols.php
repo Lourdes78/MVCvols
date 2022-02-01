@@ -18,7 +18,7 @@ while($row = $vols->fetch_assoc()){
     echo "<td>".$row['origen']."</td>";
     echo "<td>".$row['desti']."</td>";
     echo "<td>".$row['preu']."</td>";
-    echo "<td>".$row['foto']."</td>";
+    echo "<td><img src='img/" .$row['foto'] . "'  width=\"50\" height=\"60\"></td>";
     echo "<td>".$row['nombre_places']."</td>";
     echo "<td><a href='index.php?controller=vol&action=modificar&codi=".$row['codi']."'>Modificar</a></td>";
     echo "<td><a href='index.php?controller=vol&action=eliminar&codi=".$row['codi']."'>Eliminar</a></td>";
