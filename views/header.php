@@ -26,7 +26,7 @@
     <ul class="navbar-nav">
 
     <?php if(!isset($_SESSION['usuari'])){
-       header("Location: views/usuaris/login.php");
+       header("Location: views/usuari/login.php");
     }
     else if($_SESSION['rol'] == 'admin'){
       ?>

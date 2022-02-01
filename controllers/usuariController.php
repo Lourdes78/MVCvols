@@ -1,5 +1,6 @@
 <?php
 require_once "models/usuari.php";
+@session_start();
 class usuariController
 {
 
@@ -7,7 +8,7 @@ class usuariController
         if($_SESSION['rol']=='admin'){
             $usuari = new usuari();
             $usuaris = $usuari->listar();
-            require_once 'views/usuaris/mostrarusuaris.php';
+            require_once 'views/usuari/mostrarusuaris.php';
         }
         
     }

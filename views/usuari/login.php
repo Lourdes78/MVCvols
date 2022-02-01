@@ -17,8 +17,8 @@
 <section class="vh-100 gradient-custom" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form method="POST" action="../../index.php?controller=usuari&action=login" class="register-form" id="login-form">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5"> 
+        <form action="../../index.php?controller=usuari&action=login" method="post">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 ">
 

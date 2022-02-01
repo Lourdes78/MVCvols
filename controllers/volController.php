@@ -1,5 +1,6 @@
 <?php
 require_once 'models/vol.php';
+@session_start();
 class volController{
 
     public function mostrarvols(){
