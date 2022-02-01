@@ -51,6 +51,14 @@ public function listar(){
     $a->close();
     return $resultado;
 }
+public function login(){
+    $conexion = new database();
+    $sql = "SELECT * FROM usuari WHERE correu='$this->correu' AND contrasenya='$this->contrasenya'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
 /**
  * Get the value of codi
  */ 

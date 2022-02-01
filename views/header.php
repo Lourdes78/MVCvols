@@ -19,33 +19,56 @@
   <h1>LOUCEL AIRLINES</h1>
   <h2>VOLA AMB NOSALTRES !!</h2> 
   <h3>GAUDEIX EL VIATGE !!</h3> 
-</div>
-
+  </div>
+<?php @session_start(); ?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-        </li> 
-        <li class="nav-item">
-        <a class="nav-link" href="index.php?controller=usuari&action=insertarusuaris">Registre</a>
-      </li>
-    <li class="nav-item">
+
+    <?php if(!isset($_SESSION['usuari'])){
+       header("Location: views/usuaris/login.php");
+    }
+    else if($_SESSION['rol'] == 'admin'){
+      ?>
+      <li class="nav-item">
         <a class="nav-link" href="index.php?controller=vol&action=mostrarvols">Mostrar vols</a>
-        </li> 
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="index.php?controller=vol&action=insertarvols">Insertar vols</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?controller=usuari&action=mostrarusuaris">Mostrar Usuaris</a>
+        <a class="nav-link" href="index.php?controller=usuari&action=mostrarusuaris">Mostrar usuaris</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=usuari&action=insertarusuaris">Registrar usuari</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="index.php?controller=reserva&action=mostrarreserves">Mostrar reserves</a>
       </li>
-    
+
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="index.php?controller=ticket&action=mostrartickets">Mostrar tickets</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=usuari&action=logout">Log out</a>
+      </li>
+<?php } 
+
+else if($_SESSION['rol'] == 'usuari'){
+      ?>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=vol&action=mostrarvols">Mostrar vols</a>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=reserva&action=mostrarreserves">Mostrar reserves</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=ticket&action=mostrartickets">Mostrar tickets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=usuari&action=logout">Log out</a>
+      </li>
+<?php } ?>
     </ul>
   </div>
 </nav>

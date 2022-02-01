@@ -3,62 +3,103 @@ require_once "models/usuari.php";
 class usuariController
 {
 
-    public function mostrarusuaris()
-    {
-        $usuari = new usuari();
-        $usuaris = $usuari->listar();
-        require_once "views/usuari/mostrarusuaris.php";
+    public function mostrarusuaris(){
+        if($_SESSION['rol']=='admin'){
+            $usuari = new usuari();
+            $usuaris = $usuari->listar();
+            require_once 'views/usuaris/mostrarusuaris.php';
+        }
+        
     }
-    public function insertarusuaris()
-    {
-        require_once 'views/usuari/insertarusuaris.php';
+    
+    public function mostrarusuariid(){
+        if($_SESSION['rol']=='admin' and isset($_GET['codi'])){
+            $id = $_GET['codi'];
+            $usuari = new usuari();
+            $usuari->setCodi($id);
+            $usuari = $usuari->buscar();
+        }
+        require_once 'views/usuari/show.php';
     }
-    public function guardarusuaris()
-    {
 
-        $usuari = new usuari();
-        $usuari->nom = $_POST['nom'];
-        $usuari->contrasenya = $_POST['contrasenya'];
-        $usuari->correu = $_POST['correu'];
-        $usuari->adreça = $_POST['adreça'];
-        $usuari->dni = $_POST['dni'];
-        $usuari->telefon = $_POST['telefon'];
-        $usuari->num_tarjeta = $_POST['num_tarjeta'];
-        $usuari->insertar();
-        header("Location: index.php?controller=usuari&action=mostrarusuaris");
-    }
-    public function index()
-    {
-        require_once 'index.php';
-    }
-    public function eliminar()
-    {
-        $usuari = new usuari();
-        $usuari->codi = $_REQUEST['codi'];
-        $usuari->eliminar();
-        header("Location: index.php?controller=usuari&action=mostrarusuaris");
-    }
-    public function modificar(){
+    public function guardarusuari(){
         
         $usuari = new usuari();
-        $usuari->codi =$_REQUEST['codi'];
-        $r= $usuari->buscar();
-        $re = $r->fetch_assoc();
-        require_once 'views/usuari/modificarusuari.php';
+        $usuari->setNom($_POST['nom']);
+        $usuari->setDni($_POST['dni']);
+        $usuari->setCorreu($_POST['correu']);
+        $usuari->setContrasenya(md5($_POST['contrasenya']));
+        $usuari->setAdreça($_POST['adreça']);
+        $usuari->setTelefon($_POST['telefon']);
+        //$usuari->setNum_tarjeta($_POST['num_tarjeta']);
+        $usuari->insertar();
+        header("Location: views/usuari/login.php");
     }
-    public function actualitzar(){
-        $usuari = new usuari();
-        $usuari->codi = $_REQUEST["codi"];
-        $usuari->nom = $_REQUEST['nom'];
-        $usuari->contrasenya = (md5($_REQUEST['contrasenya']));
-        $usuari->correu = $_REQUEST['correu'];
-        $usuari->adreça = $_REQUEST['adreça'];
-        $usuari->dni = $_REQUEST['dni'];
-        $usuari->telefon= $_REQUEST['telefon']; 
-        $usuari->num_tarjeta = $_REQUEST['num_tarjeta']; 
-     
-        $usuari->modificar();
+    
+    public function eliminarusuaris(){
+        if($_SESSION['rol']=='admin' and isset($_GET['codi'])){
+            $id = $_GET['codi'];
+            $usuari = new usuari();
+            $usuari->setCodi($id);
+            $usuari->eliminar();
+        }
+        header('Location: index.php?controller=usuari&action=mostrarusuaris');
+    }
+    
+    public function modificarusuaris(){
+        if(isset($_GET['codi'])){
+            $id = $_GET['codi'];
+            $usuari = new usuari();
+            $usuari->setCodi($id);
+            $r = $usuari->buscar();
+            $row = $r->fetch_assoc();
+        }
+        require_once 'views/usuari/modificarusuaris.php';
+    }
+    
+    public function insertarusuaris(){
+        if($_SESSION['rol']=='admin'){
+        require_once 'views/usuari/insertarusuaris.php';
+        }
+    }
 
-      header("Location: index.php?controller=usuari&action=mostrarusuaris");
+    public function logout(){
+        session_destroy();
+        header('Location: index.php');
+    }
+
+
+    public function login(){
+        $usuari = new usuari();
+        $usuari->setCorreu($_POST['correu']);
+        $usuari->setContrasenya(md5($_POST['contrasenya']));
+        $r = $usuari->login();
+        $row = $r->fetch_assoc();
+        echo $row['contrasenya'];
+        echo $row['correu'];
+        if($row['contrasenya'] == $usuari->getContrasenya()){
+            $_SESSION['codi'] = $row['codi'];
+            $_SESSION['usuari'] = $row['correu'];
+            $_SESSION['rol'] = $row['rol'];
+            header('Location: index.php?controller=vol&action=mostrarvols');
+        }else{
+            header('Location: views/usuari/login.php');
+        }
+    }
+
+    public function actualitzarusuaris(){
+        
+            $usuari = new usuari();
+            $usuari->setCodi($_POST['codi']);
+            $usuari->setNom($_POST['nom']);
+            $usuari->setContrasenya(md5($_POST['contrasenya']));
+            $usuari->setCorreu($_POST['correu']);
+            $usuari->setAdreça($_POST['adreça']);
+            $usuari->setDni($_POST['dni']);
+            $usuari->setTelefon($_POST['telefon']);
+            $usuari->setNum_tarjeta($_POST['num_tarjeta']);
+            $usuari->modificar();
+            header('Location: index.php?controller=usuari&action=mostrarusuaris');
+        
     }
 }
