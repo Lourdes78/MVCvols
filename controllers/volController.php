@@ -14,11 +14,14 @@ class volController
 
     public function insertarvols()
     {
+        if($_SESSION['rol']=='admin'){
         require_once 'views/vol/insertarvols.php';
+        }
     }
 
     public function guardarvols()
     {
+        if($_SESSION['rol']=='admin'){
         $vol = new vol();
         $vol->origen = $_POST['origen'];
         $vol->desti = $_POST['desti'];
@@ -33,6 +36,7 @@ class volController
         $vol->nombre_places = $_POST['nombre_places'];
         $vol->insertar();
         header("Location: index.php?controller=vol&action=mostrarvols");
+        }
     }
 
     public function index()
@@ -41,22 +45,27 @@ class volController
     }
     public function eliminar()
     {
+        if($_SESSION['rol']=='admin'){
         $vol = new vol();
         $vol->codi = $_REQUEST['codi'];
         $vol->eliminar();
         header("Location: index.php?controller=vol&action=mostrarvols");
+        }
     }
     public function modificar()
     {
+        if($_SESSION['rol']=='admin'){
 
         $vol = new vol();
         $vol->codi = $_REQUEST['codi'];
         $r = $vol->buscar();
         $re = $r->fetch_assoc();
         require_once 'views/vol/modificarvols.php';
+        }
     }
     public function actualitzar()
     {
+        if($_SESSION['rol']=='admin'){
         $vol = new vol();
         $vol->codi = $_REQUEST["codi"];
         $vol->origen = $_REQUEST['origen'];
@@ -69,4 +78,5 @@ class volController
 
         header("Location: index.php?controller=vol&action=mostrarvols");
     }
+}
 }
